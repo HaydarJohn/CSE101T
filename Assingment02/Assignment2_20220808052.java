@@ -78,9 +78,6 @@ public class Assignment2_20220808052
         calculateGrade(res0,res1,res2,res3,res4,weight0,weight1
         ,weight2,weight3,weight4);
 
-
-
-
     }
 
     public static String formatCategoryName(String name)
@@ -92,10 +89,7 @@ public class Assignment2_20220808052
 
     public static boolean isQuantityValid(int quantity)
     {
-        if(quantity>0)
-        {   return true;    }
-        else
-        {   return false;   }
+        return quantity>0;
     }
 
     public static boolean isWeightValid(int weight,int totalWeight)
@@ -215,7 +209,6 @@ public class Assignment2_20220808052
         }
     }
 
-
     public static int getWeight(Scanner scan , String name)
     {
         while (true) 
@@ -243,7 +236,6 @@ public class Assignment2_20220808052
         scan.nextLine();
         return result/quantity;
     }
-
 
     public static void calculateGrade(double res0,double res1
     ,double res2,double res3,double res4,int weight0
