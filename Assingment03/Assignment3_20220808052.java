@@ -37,11 +37,181 @@ public class Assignment3_20220808052
     {
         if(category.length==quantity.length && category.length == weight.length)
         {
-
+            formatCategoryName(category);
         }
         else
         {
             System.out.println("Error: not same length array.");
         }
+    }
+
+    public static String[] formatCategoryName(String[] name)
+    {
+        for(int i = 0;i<name.length;i++)
+        {
+            name[i] = formatCategoryName(name[i]);
+        }
+        return name;
+    }
+
+    public static String formatCategoryName(String name)
+    {
+        return name.substring(0,1).toUpperCase() 
+        + name.substring(1).toLowerCase();
+    }
+
+    // Assignmet 2 codes
+
+
+    
+
+    public static boolean isQuantityValid(int quantity)
+    {
+        return quantity>0;
+    }
+
+    public static boolean isWeightValid(int weight,int totalWeight)
+    {
+        return weight >= 0 && (totalWeight + weight) < 100;
+    }
+    
+    public static String gradeLetter(double grade)
+    {
+        if(grade >= 88)
+        {
+            return "AA";
+        }
+        else if(grade >= 81)
+        {
+            return "BA";
+        }
+        else if(grade >= 74)
+        {
+            return "BB";
+        }
+        else if(grade >= 67)
+        {
+            return "CB";
+        }
+        else if(grade >= 60)
+        {
+            return "CC";
+        }
+        else if(grade >= 53)
+        {
+            return "DC";
+        }
+        else if(grade >= 46)
+        {
+            return "DD";
+        }
+        else if(grade >= 35)
+        {
+            return "FD";
+        }
+        else
+        {
+            return "FF";
+        }
+    }
+
+    public static double gpaPoints(double grade)
+    {
+        if(grade >= 88)
+        {
+            return 4.0;
+        }
+        else if(grade >= 81)
+        {
+            return 3.5;
+        }
+        else if(grade >= 74)
+        {
+            return 3.0;
+        }
+        else if(grade >= 67)
+        {
+            return 2.5;
+        }
+        else if(grade >= 60)
+        {
+            return 2.0;
+        }
+        else if(grade >= 53)
+        {
+            return 1.5;
+        }
+        else if(grade >= 46)
+        {
+            return 1.0;
+        }
+        else if(grade >= 35)
+        {
+            return 0.5;
+        }
+        else
+        {
+            return 0.0;
+        }
+    }
+
+    public static String status(double grade)
+    {
+        if(grade >= 60)
+        {   return "passed";    }
+        else if(grade >= 46)
+        {   return "conditionaly passed";   }
+        else
+        {   return "failed";    }
+    }
+     
+    public static String getName(Scanner scan)
+    {
+        System.out.println("Please enter the name of category");
+        return formatCategoryName(scan.nextLine());
+    }
+
+    public static int getQuantity(Scanner scan , String name)
+    {
+        while (true) 
+        {
+            System.out.println("Please enter hom many "+
+            "items of thistype of " + name + " were given");
+            int result = scan.nextInt();
+            if(result > 0)
+            {   
+                scan.nextLine();
+                return result;
+            }
+
+        }
+    }
+
+    public static int getWeight(Scanner scan , String name)
+    {
+        while (true) 
+        {
+            System.out.println("Please enter the percentage"
+            +" weight of "+ name);
+            int result = scan.nextInt();
+            if(result >= 0)
+            {
+                scan.nextLine();
+                return result;
+            }   
+        }
+    }
+
+    public static double getResult(Scanner scan,int quantity,String name)
+    {
+        
+        double result = 0;
+        for(int i = 0;i<quantity;i++)
+        {
+            System.out.println(name + " " + (i+1));
+            result += scan.nextDouble(); 
+        }
+        scan.nextLine();
+        return result/quantity;
     }
 }
