@@ -6,11 +6,12 @@ public class Assignment3_20220808052
     {
         Scanner scan = new Scanner(System.in);
         String[] a = {"sea" , "ase" ,"bese"};
-        int[] b = {2,3,4};
+        int[] q = {2,3,4};
+        int[] w = {50,25,25};
         int menuChoice = menu(scan, a);
         if(menuChoice == 0)
         {
-            calculateGrade(a, null, null);
+            calculateGrade(a, q, w);
         }
     }
 
@@ -26,7 +27,7 @@ public class Assignment3_20220808052
         {
             return -1;
         }
-        else if((int)temp -48>=0 && (int)temp-48 <item.length-1)
+        else if((int)temp -48>=0 && (int)temp-48 <=item.length-1)
         {
             
             return (int)temp-48;
@@ -48,16 +49,17 @@ public class Assignment3_20220808052
             
             double result = 0;
 
-            for(int i = 0;i<category.length-1;i++)
+            for(int i = 0;i<category.length;i++)
             {
                 System.out.println("Please enter " + category[i] + " notes:");
                 
                 result += getResult(scan, quantity[i], category[i]) * (weight[i] * 0.01);
-                System.out.println("The studemt has " + status(result) 
+
+            }
+            System.out.println("The studemt has " + status(result) 
                 + " CSE 101 with score of " + result + ", GPA points of " 
                 + gpaPoints(result) + ", and grade letter of " 
                 + gradeLetter(result));
-            }
             
         }
         else
