@@ -6,7 +6,12 @@ public class Assignment3_20220808052
     {
         Scanner scan = new Scanner(System.in);
         String[] a = {"sea" , "ase" ,"bese"};
-        menu(scan, a);
+        int[] b = {2,3,4};
+        int menuChoice = menu(scan, a);
+        if(menuChoice == 0)
+        {
+            calculateGrade(a, null, null);
+        }
     }
 
     public static int menu(Scanner scan,String[] item)
@@ -38,6 +43,22 @@ public class Assignment3_20220808052
         if(category.length==quantity.length && category.length == weight.length)
         {
             formatCategoryName(category);
+
+            Scanner scan = new Scanner(System.in);
+            
+            double result = 0;
+
+            for(int i = 0;i<category.length-1;i++)
+            {
+                System.out.println("Please enter " + category[i] + " notes:");
+                
+                result += getResult(scan, quantity[i], category[i]) * (weight[i] * 0.01);
+                System.out.println("The studemt has " + status(result) 
+                + " CSE 101 with score of " + result + ", GPA points of " 
+                + gpaPoints(result) + ", and grade letter of " 
+                + gradeLetter(result));
+            }
+            
         }
         else
         {
@@ -58,6 +79,21 @@ public class Assignment3_20220808052
     {
         return name.substring(0,1).toUpperCase() 
         + name.substring(1).toLowerCase();
+    }
+
+
+
+    public static double getResult(Scanner scan,int quantity,String name)
+    {
+        
+        double result = 0;
+        for(int i = 0;i<quantity;i++)
+        {
+            System.out.println(name + " " + (i+1));
+            result += scan.nextDouble(); 
+        }
+        scan.nextLine();
+        return result/quantity;
     }
 
     // Assignmet 2 codes
@@ -202,16 +238,5 @@ public class Assignment3_20220808052
         }
     }
 
-    public static double getResult(Scanner scan,int quantity,String name)
-    {
-        
-        double result = 0;
-        for(int i = 0;i<quantity;i++)
-        {
-            System.out.println(name + " " + (i+1));
-            result += scan.nextDouble(); 
-        }
-        scan.nextLine();
-        return result/quantity;
-    }
+    
 }
